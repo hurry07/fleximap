@@ -5,6 +5,11 @@ var FlexiMap = function (object) {
   var defaultAsArray = object instanceof Array;
   var _data = [];
 
+  /**
+   * 寻找到了任意一个属性就不是 empty 了
+   * @param object
+   * @return {boolean}
+   */
   FlexiMap.isEmpty = function (object) {
     var empty = true;
     for (var i in object) {
@@ -17,7 +22,7 @@ var FlexiMap = function (object) {
   };
 
   FlexiMap.isIterable = function (object) {
-    return object && (object.constructor.name == 'Object' || object instanceof Array);
+    return object && (object.constructor.name === 'Object' || object instanceof Array);
   };
 
   self.getLength = function (keyChain) {
@@ -48,6 +53,12 @@ var FlexiMap = function (object) {
     return /^[0-9]+$/.test(input);
   };
 
+  /**
+   * 返回原始键值对
+   * @param key
+   * @return {*}
+   * @private
+   */
   self._getValue = function (key) {
     return _data[key];
   };
